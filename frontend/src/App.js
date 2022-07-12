@@ -14,7 +14,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <main className="py-3">
+      <main>
         <Container>
           <Routes>
             <Route exact path="/" element={<HomeScreen />} />
