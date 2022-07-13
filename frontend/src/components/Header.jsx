@@ -6,7 +6,13 @@ import { LinkContainer } from "react-router-bootstrap";
 const Header = () => {
   return (
     <header className="fixed-top">
-      <Navbar className="bg-primary" bg="bg-primary" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar
+        className="bg-light shadow p-3"
+        bg="bg-light"
+        variant="light"
+        expand="lg"
+        collapseOnSelect
+      >
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand className="mx-5">Proshop</Navbar.Brand>
