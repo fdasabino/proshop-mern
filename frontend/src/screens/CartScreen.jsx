@@ -23,11 +23,13 @@ const CartScreen = () => {
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
+      navigate("/cart");
     }
-  }, [dispatch, productId, qty]);
+  }, [dispatch, productId, qty, navigate]);
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
+    navigate("/cart");
   };
 
   const checkoutHandler = () => {
