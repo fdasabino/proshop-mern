@@ -69,7 +69,7 @@ const ProductScreen = () => {
                     <Col className="pt-2">Quantity:</Col>
                     <Col>
                       <Form.Select
-                        className="bg-light"
+                        className="bg-light form_select"
                         as="select"
                         value={qty}
                         onChange={(e) => setQty(e.target.value)}

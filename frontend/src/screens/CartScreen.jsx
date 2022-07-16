@@ -62,6 +62,16 @@ const CartScreen = () => {
                 {cartItems.map((item) => (
                   <ListGroupItem key={item.product}>
                     <Row>
+                      <Col md={2}>
+                        <Button
+                          type="button"
+                          variant="secondary"
+                          className="my-1 btn-secondary mx-2"
+                          onClick={() => removeFromCartHandler(item.product)}
+                        >
+                          <FaRegTrashAlt color="red" />
+                        </Button>
+                      </Col>
                       <Col md={2} className="my-1">
                         <Image src={item.image} alt={item.name} fluid rounded />
                       </Col>
@@ -72,8 +82,8 @@ const CartScreen = () => {
                         ${item.price}
                       </Col>
                       <Col md={2}>
-                        <Form.Control
-                          className="bg-light"
+                        <Form.Select
+                          className="bg-light form_select"
                           as="select"
                           value={item.qty}
                           onChange={(e) =>
@@ -85,17 +95,7 @@ const CartScreen = () => {
                               {x + 1}
                             </option>
                           ))}
-                        </Form.Control>
-                      </Col>
-                      <Col md={2}>
-                        <Button
-                          type="button"
-                          variant="secondary"
-                          className="my-1 btn-bl"
-                          onClick={() => removeFromCartHandler(item.product)}
-                        >
-                          <FaRegTrashAlt color="red" />
-                        </Button>
+                        </Form.Select>
                       </Col>
                     </Row>
                   </ListGroupItem>
