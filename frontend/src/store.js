@@ -4,16 +4,28 @@ import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } fro
 import { composeWithDevTools } from "redux-devtools-extension";
 import { combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+
+// Reducers import
 import { productListReducer, productDetailsReducer } from "./redux-reducers/productReducers";
 import { cartReducer } from "./redux-reducers/cartReducers";
+import { userLoginReducer } from "./redux-reducers/userReducers";
 
+// getting data from local storage
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
 
+const userInfoFromStorage = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : null;
+
+//initial state
 const initialState = {
   cart: {
     cartItems: cartItemsFromStorage,
+    userLogin: {
+      userInfo: userInfoFromStorage,
+    },
   },
 };
 
@@ -22,13 +34,14 @@ const persistConfig = {
   storage,
 };
 
-const reducer = combineReducers({
+const reducers = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
+  userLogin: userLoginReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 const middleware = [thunk];
 
