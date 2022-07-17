@@ -105,10 +105,8 @@ const CartScreen = () => {
 
             {/* Right column */}
             <Col sm={12} md={4}>
-              <hr />
-              <h2 className="mb-2">Order Summary</h2>
-              <hr />
-              <Card>
+              <Card className="fit-content">
+                <h2 className="py-3">Order Summary</h2>
                 <ListGroup variant="flush">
                   <ListGroupItem>
                     {/* cart items */}
