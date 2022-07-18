@@ -11,8 +11,9 @@ const Header = ({ toast }) => {
 
   const logoutHandler = () => {
     dispatch(logout());
-    toast.fire("You have been logged out", "", "info");
+    toast.fire("You have been logged out...", "", "info");
   };
+
   return (
     <header className="fixed-top">
       <Navbar

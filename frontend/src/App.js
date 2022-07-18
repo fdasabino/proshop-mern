@@ -12,6 +12,7 @@ import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const toast = Swal.mixin({
   toast: true,
@@ -35,6 +36,7 @@ const App = () => {
               <Route path="" element={<CartScreen />} />
             </Route>
             <Route path="/login" element={<LoginScreen toast={toast} />} />
+            <Route path="/register" element={<RegisterScreen toast={toast} />} />
           </Routes>
         </Container>
       </main>
