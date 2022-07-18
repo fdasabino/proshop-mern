@@ -1,9 +1,18 @@
 import React from "react";
-import { FaShoppingCart, FaUser } from "react-icons/fa";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux-actions/userActions";
 
-const Header = () => {
+const Header = ({ toast }) => {
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    toast.fire("You have been logged out", "", "info");
+  };
   return (
     <header className="fixed-top">
       <Navbar
@@ -22,15 +31,20 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mx-5 text-center">
             <LinkContainer to="/cart">
-              <Nav.Link className="mx-auto">
-                <FaShoppingCart /> Cart
-              </Nav.Link>
+              <Nav.Link className="mx-auto">Cart</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/login">
-              <Nav.Link className="mx-auto">
-                <FaUser /> Login
-              </Nav.Link>
-            </LinkContainer>
+            {userInfo ? (
+              <NavDropdown title={userInfo.name.split(" ")[0]} id="username">
+                <LinkContainer to="/profile">
+                  <NavDropdown.Item>Profile</NavDropdown.Item>
+                </LinkContainer>
+                <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <LinkContainer to="/login">
+                <Nav.Link className="mx-auto">Login</Nav.Link>
+              </LinkContainer>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>
