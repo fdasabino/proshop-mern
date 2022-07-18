@@ -11,7 +11,7 @@ const Header = ({ toast }) => {
 
   const logoutHandler = () => {
     dispatch(logout());
-    toast.fire("You have been logged out...", "", "info");
+    toast.info("You have been logged out...", "", "info");
   };
 
   return (
@@ -35,7 +35,7 @@ const Header = ({ toast }) => {
               <Nav.Link className="mx-auto">Cart</Nav.Link>
             </LinkContainer>
             {userInfo ? (
-              <NavDropdown title={userInfo.name.split(" ")[0]} id="username">
+              <NavDropdown title={userInfo.name.split(" ")[0]} className="mx-auto" id="username">
                 <LinkContainer to="/profile">
                   <NavDropdown.Item>Profile</NavDropdown.Item>
                 </LinkContainer>

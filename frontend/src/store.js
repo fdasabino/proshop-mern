@@ -8,7 +8,12 @@ import thunk from "redux-thunk";
 // Reducers import
 import { productListReducer, productDetailsReducer } from "./redux-reducers/productReducers";
 import { cartReducer } from "./redux-reducers/cartReducers";
-import { userLoginReducer, userRegisterReducer } from "./redux-reducers/userReducers";
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
+} from "./redux-reducers/userReducers";
 
 // getting data from local storage
 const cartItemsFromStorage = localStorage.getItem("cartItems")
@@ -40,6 +45,8 @@ const reducers = combineReducers({
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

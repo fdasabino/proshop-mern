@@ -31,8 +31,11 @@ const LoginScreen = ({ toast }) => {
     e.preventDefault();
     //Dispatch Login
     dispatch(login(email, password));
-    toast.fire(`Logged in as: ${email}`, "", "success");
+    if (!error) {
+      toast.success(`Logged in as: ${email}`);
+    }
   };
+
   return (
     <FormContainer>
       <h1>Sign In</h1>

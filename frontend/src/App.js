@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Routes, Route } from "react-router-dom";
 
 //components
@@ -13,14 +14,7 @@ import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-
-const toast = Swal.mixin({
-  toast: true,
-  position: "top-start",
-  timer: 6000,
-  timerProgressBar: true,
-  showConfirmButton: false,
-});
+import ProfileScreen from "./screens/ProfileScreen";
 
 const App = () => {
   return (
@@ -28,15 +22,28 @@ const App = () => {
       <Header toast={toast} />
       <main>
         <Container>
+          <ToastContainer
+            position="top-center"
+            theme="dark"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <Routes>
-            <Route exact path="/" element={<HomeScreen />} />
-            <Route path="/product/:id" element={<ProductScreen />} />
+            <Route exact path="/" element={<HomeScreen toast={toast} />} />
+            <Route path="/product/:id" element={<ProductScreen toast={toast} />} />
             <Route path="/cart">
-              <Route path=":id" element={<CartScreen />} />
-              <Route path="" element={<CartScreen />} />
+              <Route path=":id" element={<CartScreen toast={toast} />} />
+              <Route path="" element={<CartScreen toast={toast} />} />
             </Route>
             <Route path="/login" element={<LoginScreen toast={toast} />} />
             <Route path="/register" element={<RegisterScreen toast={toast} />} />
+            <Route path="/profile" element={<ProfileScreen toast={toast} />} />
           </Routes>
         </Container>
       </main>
