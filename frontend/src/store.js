@@ -35,7 +35,7 @@ const initialState = {
 };
 
 const persistConfig = {
-  key: "cartItems",
+  key: "persisted",
   storage,
 };
 
