@@ -42,15 +42,17 @@ const CartScreen = () => {
       <Row className="text-center">
         {cartItems.length === 0 ? (
           <Col md={12}>
-            <Image
-              fluid
-              src="https://res.cloudinary.com/frank2021/image/upload/v1657797774/proshop/empty-cart_fzakua.png"
-              alt="empty-cart"
-            />
             <Message variant="info" className="text-center">
-              Your Cart is Empty! <br /> But it doesn't have to be! <br />
+              Your Cart is Empty! <br />
+              But it doesn't have to be! <br />
+              <Image
+                fluid
+                src="https://res.cloudinary.com/frank2021/image/upload/v1657797774/proshop/empty-cart_fzakua.png"
+                alt="empty-cart"
+              />{" "}
+              <br />
               <Link to="/">
-                Back to products <FaRegHeart color="red" />
+                Browse for products <FaRegHeart color="red" />
               </Link>
             </Message>
           </Col>

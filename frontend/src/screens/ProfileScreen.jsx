@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BsGear, BsCardChecklist } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col, Accordion } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -56,10 +57,16 @@ const ProfileScreen = ({ toast }) => {
   return (
     <Row>
       <Col md={12} xl={9}>
-        <h1>Order Details</h1>
+        <h1>
+          latest orders <BsCardChecklist />
+        </h1>
       </Col>
       <Col md={12} xl={3}>
-        <h1>Profile</h1>
+        <div>
+          <h1>
+            Profile settings <BsGear />
+          </h1>
+        </div>
         {loading && <LoadingSpinner />}
         {message && <Message variant="danger">{message}</Message>}
         {error && <Message variant="danger">{error}</Message>}
