@@ -21,13 +21,18 @@ const ShippingScreen = ({ toast }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalCode, country }));
-    navigate("/payment");
+    if (!userInfo) {
+      navigate("/login");
+      toast.info("You need to be logged in to continue...");
+    } else {
+      dispatch(saveShippingAddress({ address, city, postalCode, country }));
+      navigate("/login?redirect=/payment");
+    }
   };
 
   return (
     <Row>
-      <Col>
+      <Col md={12} sm={12}>
         <FormContainer>
           <CheckoutSteps step1 step2 userInfo={userInfo} />
           <h1>Shipping Details</h1>
